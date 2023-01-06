@@ -2,7 +2,7 @@
   "_version": "18.12.1",
   "compilerOptions": {
     "target": "ES2022",
-    "lib": ["es2022"],
+    "lib": ["es2022", "DOM"],
     "module": "ES2022",
     "rootDir": "src",
     "outDir": "dist",
