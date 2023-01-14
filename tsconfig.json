@@ -1,9 +1,8 @@
 {
-  "_version": "18.12.1",
   "compilerOptions": {
     "target": "ES2022",
     "lib": ["es2022", "DOM"],
-    "module": "ES2022",
+    "module": "NodeNext",
     "rootDir": "src",
     "outDir": "dist",
     "typeRoots": ["./src/types"],
@@ -14,7 +13,7 @@
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "allowUnusedLabels": false,
     "allowUnreachableCode": false,
     "exactOptionalPropertyTypes": true,
