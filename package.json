@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./dist/index.js",
     "dev": "nodemon --watch 'src/**/*.ts' --exec ts-node --esm src/index.ts",
-    "build": "rimraf ./dist && tsc",
+    "build": "tsc",
     "lint": "eslint '**/*.{js,ts}'",
     "lint:fix": "eslint --fix '**/*.{js,ts}'",
     "prettier": "prettier --check **/*.{js,ts}",
@@ -35,7 +35,6 @@
     "nodemon": "^2.0.19",
     "prettier": "2.8.1",
     "prisma": "^4.8.1",
-    "rimraf": "^3.0.2",
     "ts-node": "^10.9.1",
     "typescript": "^4.7.4"
   },
