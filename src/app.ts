@@ -7,6 +7,7 @@ import cors from 'cors';
 import errorHandler from './utils/error-handler.middleware.js';
 import userRouter from './modules/user/user.router.js';
 import itemRouter from './modules/item/item.router.js';
+import postRouter from './modules/post/post.router.js';
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(compression());
 // Routes
 app.use('/api/users', userRouter);
 app.use('/api/items', itemRouter);
+app.use('/api/posts', postRouter);
 
 app.get('/', (req, res) => {
   res.status(200).json({ message: 'Express TypeScript Starter' });
