@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import prisma from '../../config/db.js';
 
 export const getMany = async (
   req: Request,
@@ -6,7 +7,6 @@ export const getMany = async (
   next: NextFunction
 ): Promise<Response | undefined> => {
   try {
-    // get users
     return res.status(200).json({ data: 'Users' });
   } catch (error) {
     res.status(500);
@@ -20,7 +20,6 @@ export const getOne = async (
   next: NextFunction
 ): Promise<Response | undefined> => {
   try {
-    // get a user
     return res.status(200).json({ data: 'User1' });
   } catch (error) {
     res.status(500);
@@ -33,9 +32,16 @@ export const createOne = async (
   res: Response,
   next: NextFunction
 ): Promise<Response | undefined> => {
+  const { name, email } = req.body;
+
   try {
-    // create a user
-    return res.status(201).json({ data: 'User created.' });
+    const result = await prisma.user.create({
+      data: {
+        name,
+        email,
+      },
+    });
+    return res.status(201).json({ data: result });
   } catch (error) {
     res.status(500);
     next(error);
@@ -48,7 +54,6 @@ export const updateOne = async (
   next: NextFunction
 ): Promise<Response | undefined> => {
   try {
-    // update a user
     return res.status(200).json({ data: 'User updated.' });
   } catch (error) {
     res.status(500);
@@ -62,8 +67,34 @@ export const deleteOne = async (
   next: NextFunction
 ): Promise<Response | undefined> => {
   try {
-    // delete a user
     return res.status(200).json({ data: 'User deleted.' });
+  } catch (error) {
+    res.status(500);
+    next(error);
+  }
+};
+
+export const findDraftsByUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<Response | undefined> => {
+  const { id } = req.params;
+
+  try {
+    const drafts = await prisma.user
+      .findUnique({
+        where: {
+          id,
+        },
+      })
+      .posts({
+        where: {
+          published: false,
+        },
+      });
+
+    return res.status(200).json({ data: drafts });
   } catch (error) {
     res.status(500);
     next(error);
