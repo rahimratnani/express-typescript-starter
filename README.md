@@ -53,3 +53,9 @@ This command will,
 ```bash
 $ npm run dev
 ```
+
+## License
+
+<a href="https://github.com/rahimratnani/express-typescript-starter/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="MIT License">
+</a>
